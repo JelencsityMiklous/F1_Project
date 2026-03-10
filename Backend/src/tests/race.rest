@@ -1,0 +1,4 @@
+### GET all races
+
+GET http://localhost:4444/races
+Content-Type: application/json
