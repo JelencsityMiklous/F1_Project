@@ -15,7 +15,7 @@ export class Race {
     @Column({length: 255})
     grandPrix!: string;
 
-    @Column({default: new Date()})
+    @Column({default: () => "CURRENT_TIMESTAMP"})
     date!: Date;
 
     @Column({length: 64})
@@ -24,14 +24,14 @@ export class Race {
     @Column({length: 32})
     color!: string;
 
-    @Column({foreignKeyConstraintName: "FK_Race_Circuit"})
+    @Column({type: "int"})
     circuitId!: number;
 
     @ManyToOne(() => Circuit, circuit => circuit.races)
     circuit: Circuit = new Circuit();
 
     @OneToMany(() => Race_Result, result => result.race)
-    results: Race_Result[] = [];
+    results!: Race_Result[];
 
 }
 

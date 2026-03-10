@@ -25,11 +25,11 @@ export class Team {
     color!: string;
 
     @OneToMany(() => Driver, driver => driver.team)
-    drivers: Driver[] = [];
+    drivers!: Driver[];
 
   @OneToMany(() => Race_Result, result => result.team)
-    results: Race_Result[] = [];
-    
+    results!: Race_Result[];
+
 }
 
 

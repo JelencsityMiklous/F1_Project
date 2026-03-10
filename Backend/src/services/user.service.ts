@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../data-source";
-import { User } from "../entities/circuit.entity";
+/*
 
 export class UserService {
 
@@ -30,5 +30,5 @@ export class UserService {
     async getUserWithTasks(id: string){
         return this.repo.findOne({ where: { id }, relations: ["tasks"]}); 
     }
-    
-}
+
+}*/

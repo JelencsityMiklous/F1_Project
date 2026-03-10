@@ -22,14 +22,14 @@ export class Race_Result {
     @Column({default: false})
     fastestLap!: boolean;
 
-    @Column({foreignKeyConstraintName: "FK_Race_Result_Race"})
-    raceId!: string;
+    @Column({type: "int"})
+    raceId!: number;
 
-    @Column({foreignKeyConstraintName: "FK_Race_Result_Driver"})
-    driverId!: string;
+    @Column({type: "int"})
+    driverId!: number;
 
-    @Column({foreignKeyConstraintName: "FK_Race_Result_Team"})
-    teamId!: string;
+    @Column({type: "int"})
+    teamId!: number;
 
     @ManyToOne(() => Race, race => race.results)
     race: Race = new Race;

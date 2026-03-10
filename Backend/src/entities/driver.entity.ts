@@ -28,7 +28,7 @@ export class Driver {
     team: Team = new Team;
 
     @OneToMany(() => Race_Result, result => result.driver)
-    results: Race_Result[] = [];
+    results!: Race_Result;
 
 }   
 

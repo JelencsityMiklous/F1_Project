@@ -26,6 +26,6 @@ export class Circuit {
 
 
     @OneToMany(() => Race, race => race.circuit)
-    races: Race[] = [];
+    races!: Race[];
     
 }   

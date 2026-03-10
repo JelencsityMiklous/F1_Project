@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { TaskController } from "../controllers/task.controller";
+import { TeamController } from "../controllers/team.controller";
 
 const router = Router();
-const controller = new TaskController();
+const controller = new TeamController();
 
 router.get("/api/teams", controller.list);
 router.get("/api/teams/:id", controller.getById);
