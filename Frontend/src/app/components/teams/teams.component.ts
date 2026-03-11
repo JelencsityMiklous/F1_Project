@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
+import { MatButtonModule } from '@angular/material/button';
 
 export interface Team {
   id: number;
@@ -21,7 +22,8 @@ export interface Team {
     MatTableModule,
     MatIconModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    MatButtonModule
   ],
   templateUrl: './teams.component.html',
   styleUrls: ['./teams.component.scss']

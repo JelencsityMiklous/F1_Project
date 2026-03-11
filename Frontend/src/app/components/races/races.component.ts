@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
-
+import { MatButtonModule } from '@angular/material/button';
 export interface Race {
   id: number
   round: number
@@ -21,7 +21,8 @@ export interface Race {
     MatTableModule,
     MatIconModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    MatButtonModule
   ],
   templateUrl: './races.component.html',
   styleUrls: ['./races.component.scss']
