@@ -1,0 +1,25 @@
+.form-container {
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.team-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px 24px;
+}
+
+.form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+
+.clean-table { width: 100%; }
+.input-cell { width: 100%; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; }
+.action-buttons { display: flex; gap: 4px; }

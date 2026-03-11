@@ -1,3 +1,61 @@
+<div class="form-container mat-elevation-z4">
+  <h2>Új csapat hozzáadása</h2>
+
+  <form #teamForm="ngForm" (ngSubmit)="addTeam()" class="team-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Csapatnév</mat-label>
+      <input matInput [(ngModel)]="newTeam.name" name="name" required>
+      <mat-error *ngIf="teamForm.controls['name']?.hasError('required')">
+        Kötelező mező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Bázis</mat-label>
+      <input matInput [(ngModel)]="newTeam.base" name="base" required>
+      <mat-error *ngIf="teamForm.controls['base']?.hasError('required')">
+        Kötelező mező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Csapatvezető</mat-label>
+      <input matInput [(ngModel)]="newTeam.principal" name="principal" required>
+      <mat-error *ngIf="teamForm.controls['principal']?.hasError('required')">
+        Kötelező mező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Motor</mat-label>
+      <input matInput [(ngModel)]="newTeam.powerUnit" name="powerUnit" required>
+      <mat-error *ngIf="teamForm.controls['powerUnit']?.hasError('required')">
+        Kötelező mező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Szín</mat-label>
+      <input matInput [(ngModel)]="newTeam.color" name="color" required>
+      <mat-error *ngIf="teamForm.controls['color']?.hasError('required')">
+        Kötelező mező
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!teamForm.valid || saving">
+        <mat-icon *ngIf="!saving">add</mat-icon>
+        <mat-icon *ngIf="saving" class="rotating">autorenew</mat-icon>
+        Hozzáadás
+      </button>
+
+      <button mat-stroked-button type="button" (click)="resetNewTeam()" [disabled]="saving">
+        Töröl
+      </button>
+    </div>
+  </form>
+</div>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z4 clean-table">
   <ng-container matColumnDef="nr">
     <th mat-header-cell *matHeaderCellDef>#</th>
