@@ -21,9 +21,6 @@ export class Race {
     @Column({length: 64})
     status!: string;
 
-    @Column({length: 32})
-    color!: string;
-
     @Column({type: "int"})
     circuitId!: number;
 

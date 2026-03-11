@@ -1,0 +1,84 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z4 clean-table">
+  <!-- Nr -->
+  <ng-container matColumnDef="nr">
+    <th mat-header-cell *matHeaderCellDef>#</th>
+    <td mat-cell *matCellDef="let driver; let i = index">{{ i + 1 }}</td>
+  </ng-container>
+
+  <!-- First Name -->
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef>First Name</th>
+    <td mat-cell *matCellDef="let driver">
+      <span *ngIf="editId !== driver.id">{{ driver.firstName }}</span>
+      <input *ngIf="editId === driver.id" [(ngModel)]="editDriver.firstName" class="input-cell">
+    </td>
+  </ng-container>
+
+  <!-- Last Name -->
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef>Last Name</th>
+    <td mat-cell *matCellDef="let driver">
+      <span *ngIf="editId !== driver.id">{{ driver.lastName }}</span>
+      <input *ngIf="editId === driver.id" [(ngModel)]="editDriver.lastName" class="input-cell">
+    </td>
+  </ng-container>
+
+  <!-- Nationality -->
+  <ng-container matColumnDef="nationality">
+    <th mat-header-cell *matHeaderCellDef>Nationality</th>
+    <td mat-cell *matCellDef="let driver">
+      <span *ngIf="editId !== driver.id">{{ driver.nationality }}</span>
+      <input *ngIf="editId === driver.id" [(ngModel)]="editDriver.nationality" class="input-cell">
+    </td>
+  </ng-container>
+
+  <!-- Number -->
+  <ng-container matColumnDef="number">
+    <th mat-header-cell *matHeaderCellDef>Number</th>
+    <td mat-cell *matCellDef="let driver">
+      <span *ngIf="editId !== driver.id">{{ driver.number }}</span>
+      <input *ngIf="editId === driver.id" [(ngModel)]="editDriver.number" type="number" class="input-cell">
+    </td>
+  </ng-container>
+
+  <!-- Rookie -->
+  <ng-container matColumnDef="rookie">
+    <th mat-header-cell *matHeaderCellDef>Rookie</th>
+    <td mat-cell *matCellDef="let driver">
+      <span *ngIf="editId !== driver.id">{{ driver.rookie ? 'Yes' : 'No' }}</span>
+      <mat-checkbox *ngIf="editId === driver.id" [(ngModel)]="editDriver.rookie"></mat-checkbox>
+    </td>
+  </ng-container>
+
+  <!-- Team ID -->
+  <ng-container matColumnDef="teamId">
+    <th mat-header-cell *matHeaderCellDef>Team ID</th>
+    <td mat-cell *matCellDef="let driver">
+      <input *ngIf="editId === driver.id" [(ngModel)]="editDriver.teamId" type="number" class="input-cell">
+    </td>
+  </ng-container>
+
+  <!-- Actions -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let driver">
+      <div class="action-buttons">
+        <button mat-icon-button color="primary" *ngIf="editId !== driver.id" (click)="startEdit(driver)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" *ngIf="editId === driver.id" (click)="update()">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="editId === driver.id" (click)="cancelEdit()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="delete(driver.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+</table>

@@ -1,0 +1,136 @@
+<div class="form-container mat-elevation-z4">
+  <h2>Új pálya hozzáadása</h2>
+
+  <form #circuitForm="ngForm" (ngSubmit)="addCircuit()" class="circuit-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Név</mat-label>
+      <input matInput [(ngModel)]="newCircuit.name" name="name" required>
+      <mat-error *ngIf="circuitForm.controls['name']?.hasError('required')">
+        Kötelező mező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ország</mat-label>
+      <input matInput [(ngModel)]="newCircuit.country" name="country" required>
+      <mat-error *ngIf="circuitForm.controls['country']?.hasError('required')">
+        Kötelező mező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Város</mat-label>
+      <input matInput [(ngModel)]="newCircuit.city" name="city" required>
+      <mat-error *ngIf="circuitForm.controls['city']?.hasError('required')">
+        Kötelező mező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Hossz (km)</mat-label>
+      <input matInput type="number" step="0.001" [(ngModel)]="newCircuit.lengthKm" name="lengthKm" required>
+      <mat-icon matSuffix>straighten</mat-icon>
+      <mat-error *ngIf="circuitForm.controls['lengthKm']?.hasError('required')">
+        Kötelező mező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Pályarekord</mat-label>
+      <input matInput [(ngModel)]="newCircuit.lapRecord" name="lapRecord" required>
+      <mat-error *ngIf="circuitForm.controls['lapRecord']?.hasError('required')">
+        Kötelező mező
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!circuitForm.valid || saving">
+        <mat-icon *ngIf="!saving">add</mat-icon>
+        <mat-icon *ngIf="saving" class="rotating">autorenew</mat-icon>
+        Hozzáadás
+      </button>
+
+      <button mat-stroked-button type="button" (click)="resetNewCircuit()" [disabled]="saving">
+        Töröl
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- Táblázat alatta -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z4 clean-table">
+  <!-- Nr -->
+  <ng-container matColumnDef="nr">
+    <th mat-header-cell *matHeaderCellDef>#</th>
+    <td mat-cell *matCellDef="let circuit; let i = index">{{ i + 1 }}</td>
+  </ng-container>
+
+  <!-- Name -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let circuit">
+      <span *ngIf="editId !== circuit.id">{{ circuit.name }}</span>
+      <input *ngIf="editId === circuit.id" [(ngModel)]="editCircuit.name" class="input-cell">
+    </td>
+  </ng-container>
+
+  <!-- Country -->
+  <ng-container matColumnDef="country">
+    <th mat-header-cell *matHeaderCellDef>Country</th>
+    <td mat-cell *matCellDef="let circuit">
+      <span *ngIf="editId !== circuit.id">{{ circuit.country }}</span>
+      <input *ngIf="editId === circuit.id" [(ngModel)]="editCircuit.country" class="input-cell">
+    </td>
+  </ng-container>
+
+  <!-- City -->
+  <ng-container matColumnDef="city">
+    <th mat-header-cell *matHeaderCellDef>City</th>
+    <td mat-cell *matCellDef="let circuit">
+      <span *ngIf="editId !== circuit.id">{{ circuit.city }}</span>
+      <input *ngIf="editId === circuit.id" [(ngModel)]="editCircuit.city" class="input-cell">
+    </td>
+  </ng-container>
+
+  <!-- Length (km) -->
+  <ng-container matColumnDef="lengthKm">
+    <th mat-header-cell *matHeaderCellDef>Length (km)</th>
+    <td mat-cell *matCellDef="let circuit">
+      <span *ngIf="editId !== circuit.id">{{ circuit.lengthKm }}</span>
+      <input *ngIf="editId === circuit.id" [(ngModel)]="editCircuit.lengthKm" type="number" step="0.001" class="input-cell">
+    </td>
+  </ng-container>
+
+  <!-- Lap Record -->
+  <ng-container matColumnDef="lapRecord">
+    <th mat-header-cell *matHeaderCellDef>Lap Record</th>
+    <td mat-cell *matCellDef="let circuit">
+      <span *ngIf="editId !== circuit.id">{{ circuit.lapRecord || '-' }}</span>
+      <input *ngIf="editId === circuit.id" [(ngModel)]="editCircuit.lapRecord" class="input-cell">
+    </td>
+  </ng-container>
+
+  <!-- Actions -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let circuit">
+      <div class="action-buttons">
+        <button mat-icon-button color="primary" *ngIf="editId !== circuit.id" (click)="startEdit(circuit)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" *ngIf="editId === circuit.id" (click)="update()">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="editId === circuit.id" (click)="cancelEdit()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="delete(circuit.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+</table>
