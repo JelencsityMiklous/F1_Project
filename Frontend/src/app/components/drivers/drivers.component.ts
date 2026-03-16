@@ -56,7 +56,7 @@ export class DriversComponent implements OnInit {
     nationality: '',
     number: null as any,
     rookie: false,
-    teamId: null as any
+    teamId: 0
   };
 
   saving = false;
@@ -106,7 +106,7 @@ export class DriversComponent implements OnInit {
       nationality: '',
       number: null as any,
       rookie: false,
-      teamId: null as any
+      teamId: 0
     };
 
     if (this.driverForm) {

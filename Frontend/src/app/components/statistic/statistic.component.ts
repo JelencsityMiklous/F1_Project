@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-statistic',
@@ -28,6 +29,11 @@ export class StatisticComponent implements OnInit {
     races: 0,
     results: 0
   };
+
+  constructor(private api: ApiService) {
+}
+
+  
 
   ngOnInit() {
     this.animateToValue('teams', 10);
