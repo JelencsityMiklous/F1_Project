@@ -18,5 +18,9 @@ table{
 }
 
 .mat-mdc-row:hover{
-  background:#f5f5f5;
+  background:#f5f5f5 !important;
 }
+
+.gold { background-color: gold; color: black; }
+.silver { background-color: silver; color: black; }
+.bronze { background-color: #cd7f32; color: white; }

@@ -33,6 +33,7 @@ export class PointsComponent implements OnInit {
         this.constructors = data;
       });
 
+
   }
 
 }

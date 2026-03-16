@@ -1,7 +1,6 @@
 <div class="standings">
 
   <mat-card>
-
     <mat-card-title>Versenyzői pontverseny</mat-card-title>
 
     <table mat-table [dataSource]="drivers" class="mat-elevation-z2">
@@ -49,14 +48,18 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="driverColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: driverColumns;"></tr>
+      <tr mat-row *matRowDef="let row; let i = index; columns: driverColumns"
+          [ngClass]="{
+            'gold': i === 0,
+            'silver': i === 1,
+            'bronze': i === 2
+          }">
+      </tr>
 
     </table>
-
   </mat-card>
 
   <mat-card>
-
     <mat-card-title>Konstruktőri pontverseny</mat-card-title>
 
     <table mat-table [dataSource]="constructors" class="mat-elevation-z2">
@@ -97,10 +100,15 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="constructorColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: constructorColumns;"></tr>
+      <tr mat-row *matRowDef="let row; let i = index; columns: constructorColumns"
+          [ngClass]="{
+            'gold': i === 0,
+            'silver': i === 1,
+            'bronze': i === 2
+          }">
+      </tr>
 
     </table>
-
   </mat-card>
 
 </div>
