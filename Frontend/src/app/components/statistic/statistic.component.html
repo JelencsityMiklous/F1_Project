@@ -1,11 +1,51 @@
-<mat-grid-list cols="5" rowHeight="2:1">
-  <mat-grid-tile>
-    <h3>Csapatok</h3>
-    <h6>11</h6>
-</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>3</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
-  <mat-grid-tile>5</mat-grid-tile>
-</mat-grid-list>
-<br>
+<div class="stats-grid" [@fadeIn]>
+  <mat-card class="stat-card">
+    <mat-card-content>
+      <div class="stat-icon">
+        <mat-icon>group_work</mat-icon>
+      </div>
+      <div class="stat-value">{{ stats.teams }}</div>
+      <div class="stat-label">Csapatok</div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="stat-card">
+    <mat-card-content>
+      <div class="stat-icon">
+        <mat-icon>person</mat-icon>
+      </div>
+      <div class="stat-value">{{ stats.drivers }}</div>
+      <div class="stat-label">Versenyzők</div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="stat-card">
+    <mat-card-content>
+      <div class="stat-icon">
+        <mat-icon>map</mat-icon>
+      </div>
+      <div class="stat-value">{{ stats.circuits }}</div>
+      <div class="stat-label">Pályák</div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="stat-card">
+    <mat-card-content>
+      <div class="stat-icon">
+        <mat-icon>flag</mat-icon>
+      </div>
+      <div class="stat-value">{{ stats.races }}</div>
+      <div class="stat-label">Versenyek</div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="stat-card">
+    <mat-card-content>
+      <div class="stat-icon">
+        <mat-icon>emoji_events</mat-icon>
+      </div>
+      <div class="stat-value">{{ stats.results }}</div>
+      <div class="stat-label">Eredmények</div>
+    </mat-card-content>
+  </mat-card>
+</div>

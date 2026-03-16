@@ -8,11 +8,12 @@ import { TeamsComponent } from './components/teams/teams.component';
 import { CircuitsComponent } from './components/circuits/circuits.component';
 import { DriversComponent } from './components/drivers/drivers.component';
 import { RacesComponent } from './components/races/races.component';
+import { RaceResultsComponent } from './components/races-results/races-results.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, MatTabsModule, StatisticComponent, TeamsComponent, CircuitsComponent, DriversComponent, RacesComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, MatTabsModule, StatisticComponent, TeamsComponent, CircuitsComponent, DriversComponent, RacesComponent, RaceResultsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
