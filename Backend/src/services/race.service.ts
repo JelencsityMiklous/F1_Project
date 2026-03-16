@@ -9,11 +9,11 @@ export class RaceService {
         private raceRepo: Repository<Race> = AppDataSource.getRepository("Race"),
     ) {}
 
-    async createRace(round: number, grandPrix: string, date: Date, status: string, color: string, circuitId: number) {
+    async createRace(round: number, grandPrix: string, date: Date, status: string, circuitId: number) {
         const circuit = await this.circuitRepo.findOneBy({ id: circuitId });
         if (!circuit) throw new Error("Circuit not found");
 
-        const race = this.raceRepo.create({ round, grandPrix, date, status, color, circuit });
+        const race = this.raceRepo.create({ round, grandPrix, date, status, circuit });
         return this.raceRepo.save(race);
     }
 
@@ -28,7 +28,7 @@ export class RaceService {
     }
 
     async updateRace(id: number, round: number, grandPrix: string, date: Date, status: string, color: string, circuitId: number) {
-        return this.raceRepo.update(id, { round, grandPrix, date, status, color, circuitId });
+        return this.raceRepo.update(id, { round, grandPrix, date, status, circuitId });
     }
 
     async deleteRace(id: number) {

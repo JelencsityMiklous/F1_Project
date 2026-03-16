@@ -12,7 +12,7 @@ export class RaceController {
         }
 
         try {
-            const race = await this.raceService.createRace(round, grandPrix, date, status, color, circuitId);
+            const race = await this.raceService.createRace(round, grandPrix, date, status, circuitId);
             return res.status(201).json(race);
         } catch (error) {
             console.error("Error creating race:", error);
