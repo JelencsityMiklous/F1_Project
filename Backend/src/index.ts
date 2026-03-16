@@ -17,6 +17,7 @@ import raceRoutes from "./routes/race.routes"
 import teamRoutes from "./routes/team.routes"
 import driverRoutes from "./routes/driver.routes"
 import raceResultRoutes from "./routes/race_result.routes"
+import pointRoutes from "./routes/point.routes"
 
 app.use("/system", systemRoutes);
 app.use("/circuits", circuitRoutes);
@@ -24,7 +25,7 @@ app.use("/races", raceRoutes);
 app.use("/teams", teamRoutes);
 app.use("/drivers", driverRoutes);
 app.use("/race-results", raceResultRoutes);
-
+app.use("/points", pointRoutes);
 
 AppDataSource.initialize()
     .then(() => {
